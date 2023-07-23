@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Avatar, AvatarImage } from "./ui/Avatar";
-import { Command, CommandInput } from "./ui/command";
+import { Command, CommandInput } from "./ui/Command";
 
 interface NavbarProps {}
 
