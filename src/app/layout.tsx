@@ -20,9 +20,7 @@ export default function RootLayout({
       <body className="min-h-screen pt-12 bg-slate-50">
         <Navbar />
 
-        <div className="container max-w-7xl mx-auto h-full pt-12">
-          {children}
-        </div>
+        <div className="max-w-7xl mx-auto h-full p-7">{children}</div>
       </body>
     </html>
   );
