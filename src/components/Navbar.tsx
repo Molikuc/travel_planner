@@ -1,6 +1,17 @@
 import { FC } from "react";
 import { Avatar, AvatarImage } from "./ui/Avatar";
 import { Command, CommandInput } from "./ui/Command";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/DropdownMenu";
+import { Button } from "./ui/button";
+import { FaUser } from "react-icons/fa";
+import { IoSettingsSharp, IoLogOut } from "react-icons/io5";
 
 interface NavbarProps {}
 
@@ -12,9 +23,32 @@ const Navbar: FC<NavbarProps> = ({}) => {
         <Command className="relative rounded-lg border max-w-lg z-50 overflow-visible">
           <CommandInput placeholder="Type a place..." />
         </Command>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-        </Avatar>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="gap-2 cursor-pointer">
+              <FaUser className="text-lg" />
+              Profile
+            </DropdownMenuItem>
+            <DropdownMenuItem className="gap-2 cursor-pointer">
+              <IoSettingsSharp className="text-lg" />
+              Settings
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="gap-2 cursor-pointer">
+              <IoLogOut className="text-xl" />
+              Log Out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
