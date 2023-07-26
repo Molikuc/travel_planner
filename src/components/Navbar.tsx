@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/DropdownMenu";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 import { FaUser } from "react-icons/fa";
 import { IoSettingsSharp, IoLogOut } from "react-icons/io5";
 
