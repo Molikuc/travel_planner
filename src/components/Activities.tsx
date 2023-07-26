@@ -1,14 +1,16 @@
 import { FC } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card";
 
-interface ActivitiesProps {}
+interface ActivitiesProps {
+  name: string;
+}
 
-const Activities: FC<ActivitiesProps> = ({}) => {
+const Activities: FC<ActivitiesProps> = ({ name }) => {
   return (
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Name of The Activity</CardTitle>
+          <CardTitle>{name}</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-xl text-center">

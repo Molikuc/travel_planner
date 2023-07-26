@@ -7,8 +7,6 @@ export default function Home() {
     <div className="grid gap-12">
       <Map />
       <Days />
-
-      <Activities />
     </div>
   );
 }
