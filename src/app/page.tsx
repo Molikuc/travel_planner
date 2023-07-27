@@ -1,12 +1,13 @@
-import Activities from "@/components/Activities";
-import Days from "@/components/Days";
-import Map from "@/components/Map";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid gap-12">
-      <Map />
-      <Days />
+    <div>
+      <div>Welcome to the Travel Planner</div>
+
+      <Link href="/user-travel-plan">
+        You can acces to a example if you Click Me
+      </Link>
     </div>
   );
 }
