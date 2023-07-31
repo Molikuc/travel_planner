@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,10 +16,16 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/Button";
 
 const UserAccount = () => {
+  const [isValueTrue, setIsValueTrue] = useState(false)
+ 
+  useEffect(() => {
+    localStorage.getItem('isLogged') ? setIsValueTrue(true) : setIsValueTrue(false)
+  }, [])
+
   
   return (
     <div>
-      {localStorage.getItem('isLogged') ? (
+      {isValueTrue ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer">
@@ -39,7 +45,6 @@ const UserAccount = () => {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-2 cursor-pointer">
-              
               <IoLogOut className="text-xl" />
               Log Out
             </DropdownMenuItem>
