@@ -22,6 +22,10 @@ const UserAccount = () => {
     localStorage.getItem('isLogged') ? setIsValueTrue(true) : setIsValueTrue(false)
   }, [])
 
+  const signOut = () => {
+      localStorage.setItem('isLogged', JSON.stringify(false))
+      setIsValueTrue(false)
+  }
   
   return (
     <div>
@@ -44,7 +48,7 @@ const UserAccount = () => {
               Settings
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 cursor-pointer">
+            <DropdownMenuItem className="gap-2 cursor-pointer" onSelect={signOut}>
               <IoLogOut className="text-xl" />
               Log Out
             </DropdownMenuItem>
