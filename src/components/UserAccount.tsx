@@ -16,11 +16,10 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/Button";
 
 const UserAccount = () => {
-  const [isLogged, setIsLogged] = useState(false);
-
+  
   return (
     <div>
-      {isLogged ? (
+      {localStorage.getItem('isLogged') ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer">
@@ -40,6 +39,7 @@ const UserAccount = () => {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-2 cursor-pointer">
+              
               <IoLogOut className="text-xl" />
               Log Out
             </DropdownMenuItem>
