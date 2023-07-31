@@ -11,15 +11,22 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [userInput, setUserInput] = useState('')
   const { toast } = useToast();
 
+
   async function onSubmit(event: React.SyntheticEvent) {
+    const expectedValue = 'name@example.com'
+
     event.preventDefault();
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+
+    userInput === expectedValue ? localStorage.setItem('isLogged', JSON.stringify(true)) : console.log('input incorrect')
+
   }
 
   const handleClick = () => {
@@ -37,6 +44,8 @@ const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
           <Input
             id="email"
             placeholder="name@example.com"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
             type="email"
             autoCapitalize="none"
             autoComplete="email"
