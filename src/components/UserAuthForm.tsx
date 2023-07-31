@@ -1,12 +1,17 @@
 "use client";
 
-import { Input } from "./ui/input";
+import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { Icons } from "./Icons";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "./ui/Toaster";
 
-const UserAuthForm = ({}) => {
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
@@ -16,6 +21,14 @@ const UserAuthForm = ({}) => {
       setIsLoading(false);
     }, 3000);
   }
+
+  const handleClick = () => {
+    toast({
+      title: "Authentification Not Working",
+      description:
+        "Authentification with Google / Github will be available later",
+    });
+  };
 
   return (
     <div className="grid gap-6">
@@ -49,14 +62,27 @@ const UserAuthForm = ({}) => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <Button className="border-zinc-300" variant="outline" type="button">
+        <Button
+          onClick={handleClick}
+          className="border-zinc-300"
+          variant="outline"
+          type="button"
+        >
           <Icons.google className="mr-2 h-4 w-4" /> Google
         </Button>
-        <Button className="border-zinc-300" variant="outline" type="button">
+        <Button
+          onClick={handleClick}
+          className="border-zinc-300"
+          variant="outline"
+          type="button"
+        >
           <Icons.gitHub className="mr-2 h-4 w-4" /> Github
         </Button>
       </div>
+      <Toaster />
     </div>
+    // TODO
+    //Make the authentification works with a fake email
   );
 };
 
